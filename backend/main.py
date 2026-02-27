@@ -8,7 +8,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
-        "http://https://binary-analyzer-and-classficator-yr.vercel.app"
+        "https://binary-analyzer-and-classficator-yr.vercel.app"
     ],
     allow_methods=["*"],
     allow_headers=["*"],
