@@ -17,12 +17,16 @@ def analyze_binary(data: bytes, block_size=32):
         for b in blocks
     ])
 
-    clusters = cluster_blocks(features)
+    clusters, scores = cluster_blocks(features)
     plot = cluster_plot(features, clusters)
+    
+
 
     return {
         "num_blocks": len(blocks),
         "clusters": clusters.tolist(),
+        "silhouette_score": scores,
         "features": features.tolist(),
-        "plot": plot
+        "plot": plot,
+        
     }
