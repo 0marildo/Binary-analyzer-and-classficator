@@ -25,8 +25,9 @@ jobs:
         working-directory: backend      # ← entra na pasta certa
 
       - name: Rodar testes
-        run: PYTHONPATH=. pytest tests/ -v --cov=. --cov-fail-under=50
-        working-directory: backend      # ← roda de dentro do backend
+        run: |
+          cd ..
+          PYTHONPATH=backend pytest backend/tests/ -v --cov=backend --cov-fail-under=50
 
   frontend:
     runs-on: ubuntu-latest
