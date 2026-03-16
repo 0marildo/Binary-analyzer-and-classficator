@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
-from services.binary_analyzer import process_binary_file
-from schemas.analyze import AnalyseResponse
+from ...services.binary_analyzer import process_binary_file
+from ...schemas.analyze import AnalyseResponse
 import tracemalloc
 router = APIRouter(prefix="/api/v1", tags=["analyze"])
 

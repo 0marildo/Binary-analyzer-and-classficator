@@ -1,5 +1,5 @@
 import numpy as np
-from ml.analyzer import analyze_binary
+from ..ml.analyzer import analyze_binary
 from collections import Counter
 
 def process_binary_file(data: bytes) -> dict:
