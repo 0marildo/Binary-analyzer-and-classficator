@@ -25,9 +25,8 @@ jobs:
         working-directory: backend      # ← entra na pasta certa
 
       - name: Rodar testes
-        run: |
-          cd ..
-          PYTHONPATH=backend pytest backend/tests/ -v --cov=backend --cov-fail-under=50
+        run: PYTHONPATH=/home/runner/work/Binary-analyzer-and-classficator/Binary-analyzer-and-classficator/backend pytest tests/ -v --cov=. --cov-fail-under=50
+        working-directory: backend
 
   frontend:
     runs-on: ubuntu-latest
