@@ -25,7 +25,7 @@ jobs:
         working-directory: backend      # ← entra na pasta certa
 
       - name: Rodar testes
-        run: pytest tests/ -v --cov=. --cov-fail-under=50
+        run: PYTHONPATH=. pytest tests/ -v --cov=. --cov-fail-under=50
         working-directory: backend      # ← roda de dentro do backend
 
   frontend:

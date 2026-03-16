@@ -6,7 +6,7 @@ from unittest.mock import patch
 def test_analyze_aceita_arquivo_bin_valido(client, valid_bin_file):
     # Mocka o process_binary_file pra não depender do core funcionando
     # Isso é um unit test — testa SÓ a rota, não o processamento
-    with patch("backend.api.routes.api.process_binary_file") as mock_process:
+    with patch("api.routes.api.process_binary_file") as mock_process:
         mock_process.return_value = {
             "num_blocks": 10,
             "clusters": [0, 1, 0, 1, 0],
