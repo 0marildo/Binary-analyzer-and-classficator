@@ -1,4 +1,4 @@
-const API_URL = "https://binary-analyzer-and-classficator-production.up.railway.app/api/v1"
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api/v1"
 
 export async function analyzeBinary(file) {
   const formData = new FormData()
