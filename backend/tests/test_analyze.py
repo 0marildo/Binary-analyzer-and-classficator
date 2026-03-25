@@ -49,16 +49,14 @@ def test_analyze_rejeita_arquivo_sem_extensao(client):
 # ─── Edge cases de arquivo ───────────────────────────────────
 
 def test_analyze_rejeita_arquivo_vazio(client, empty_bin_file):
-    with patch("backend.api.routes.api.process_binary_file") as mock_process:
-        mock_process.side_effect = ValueError("Arquivo vazio")
+    filename, content, content_type = empty_bin_file
+    response = client.post(
+        "/api/v1/analyze",
+        files={"file": (filename, content, content_type)}
+    )
 
-        filename, content, content_type = empty_bin_file
-        response = client.post(
-            "/api/v1/analyze",
-            files={"file": (filename, content, content_type)}
-        )
-
-    assert response.status_code == 500
+    assert response.status_code == 400
+    assert "empty" in response.json()["detail"].lower()
 
 def test_analyze_retorna_500_quando_processamento_falha(client, valid_bin_file):
     # Simula o core explodindo — garante que a rota trata o erro corretamente

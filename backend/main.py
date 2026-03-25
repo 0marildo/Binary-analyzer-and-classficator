@@ -1,15 +1,14 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.routes.api import router
 
+origins = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
+
 app = FastAPI(title="Binary Analyzer API", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "https://binary-analyzer-and-classficator-yr.vercel.app",
-    ],
+    allow_origins=origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
